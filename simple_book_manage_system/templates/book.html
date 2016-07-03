@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统--书本管理</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+
+</head>
+<body>
+<div class="breadcrumbs">
+    <a href="http://127.0.0.1:8000/book/">book</a>
+    <a href="http://127.0.0.1:8000/book/book.html">/book_manager</a>
+
+</div>
+<form action="/book/book.html/" method="post">
+    <fieldset>
+        书籍名字：<input name="book_name" id="pub_name" type="text"><p>
+        书籍作者：<select size="3">
+                    {% for author in author_list %}
+                        <option>{{ author }}</option>
+                    {% endfor %}
+                  </select><p>
+        出 版 社:<select>
+                  {% for publisher in pulisher_list %}
+                        <option>{{ publisher }}</option>
+                  {% endfor %}
+                 </select><p>
+        日    期：<input name="date" id="indate" type="text" placeholder="20160501"><p>
+        <input value="add"  onclick="return check_date()" type="submit">
+    </fieldset>
+
+</form>
+<table cellspacing="0" border="solid 1px " style="border-color: beige" >
+    <tr style="color: red">
+        <td>书籍名字</td>
+        <td>书籍作者</td>
+        <td>书籍出版社</td>
+        <td>出版时间</td>
+    </tr>
+    {% for line in book_info  %}
+        <tr style="color: green">
+            <td><div >{{ line.title }}</div></td>
+            <td><div >{{ line.authors }}</div></td>
+            <td><div >{{ line.publisher }}</div></td>
+            <td><div >{{ line.publisher_date }}</div></td>
+        </tr>
+    {% endfor %}
+</table>
+<script src="/static/js/jquery-2.2.3.js"></script>
+<script src="/static/js/table_edit.js"></script>
+
+</body>
+</html>

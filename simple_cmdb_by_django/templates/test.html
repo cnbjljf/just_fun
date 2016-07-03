@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<legend>编辑设备信息</legend>
+					<form action="/test/" method="post">
+						主机名<input  id="in_hostname" type="text" name="hostname" value=""><p>
+						端口：<input id="in_port" type="text" name="hostport" value=""><p>
+                        &nbsp;&nbsp;&nbsp; IP: &nbsp;&nbsp;&nbsp;<input id="in_ip" type="text" name="hostip" value=""></p>
+						状态：<select id="in_status" name="status">
+							  <option value="online" name="online">在线</option>
+							  <option value="offline" name="offline">下线</option>
+							  <option value="fix" name="fix">维护</option>
+							  </select><p>
+						<input type="submit"  name="action" value="提交">
+						<input type="button"  onclick="return Cancle_sm()" value="取消">
+					</form>
+				</fieldset>
+
+</body>
+</html>

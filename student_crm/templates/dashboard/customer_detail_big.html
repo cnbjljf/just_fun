@@ -1,0 +1,36 @@
+{% extends 'Dashboard Template for Bootstrap.html' %}
+{% load customer_tag %}
+{% block page-header %}
+客户详细信息
+{% endblock %}
+{% block page-content %}
+    <form  class="form-horizontal"  method="post" >{% csrf_token %}
+       {% for field in customer_form %}
+             <div class="form-group">
+                   <!--通过required来判断是否为必填项-->
+                {% if field.field.required %}
+                    <label  class="col-sm-2 control-label text-left">*{{ field.label }}</label>
+                {% else %}
+                    <label style="font-weight: normal" class="col-sm-2 control-label text-left">
+                        {{ field.label }}
+                    </label>
+                {% endif %}
+                 <div class="col-sm-9">
+                    {{ field }}
+                  {% if field.errors %}
+                     <ul>
+                        {% for error in field.errors %}
+                            <li style="color:red">{{ error }}</li>
+                        {% endfor %}
+                     </ul>
+                  {% endif %}
+                </div>
+              </div>
+       {% endfor %}
+        <div class="col-sm-11">
+           <input class="btn btn-success pull-right" type="submit" value="Save">
+
+        </div>
+    </form>
+
+{% endblock %}

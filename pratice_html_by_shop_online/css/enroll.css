@@ -1,0 +1,187 @@
+button, dd, div, dl, dt, form, img, input, li, ol, p, td, th, ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+.contain-wrap {
+    background: url(../images/bg2.jpg) no-repeat center 0;
+    height: 1920px;
+    width: 1080px;
+    margin-bottom: 34px;
+}
+.contain .reg-form>div {
+    padding: 9px 5px;
+}
+
+.contain .reg-form label, .contain .form-title a {
+    display: inline-block;
+    width: 90px;
+    height: 18px;
+    padding: 11px 0;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+.contain .reg-form .txt-area {
+    border: 1px solid #dedede;
+    width: 235px;
+    height: 18px;
+    padding: 10px 5px;
+    margin-right: 5px;
+    overflow: visible;
+}
+
+.contain .reg-form .randcode h2 a {
+    color: #b1191a;
+    border: 1px solid #b1191a;
+    font-size: 18px;
+    display: inline-block;
+    width: 120px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    background-color: #ffffff;
+}
+i, em {
+    font-style: normal;
+}
+
+.contain .reg-form .readme-item .readme-label {
+    display: inline-block;
+    width: 260px;
+    height: 18px;
+    padding: 11px 0;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: -3px;
+    margin-left: -15px;
+}
+.contain .reg-form label, .contain .form-title a {
+    display: inline-block;
+    width: 90px;
+    height: 18px;
+    padding: 11px 0;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+.contain .ex-reg {}.contain .reg-form {
+	padding: 0 20px
+}
+.contain .reg-form {
+    padding: 0 20px;
+}
+.thickdiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000001;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border: 0;
+    filter: alpha(opacity = 15);
+    opacity: .15;
+}
+.contain .reg-wrap {
+    position: relative;
+    width: 675px;
+    margin: 0 211px;
+    padding: 30px 0;
+    background: #fcfaed;
+}
+.contain {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.thickcon {
+    overflow: auto;
+    background: #fff;
+    border: solid #C4C4C4;
+    border-width: 1px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+.thickbox {
+    position: absolute;
+    z-index: 10000002;
+    overflow: hidden;
+    padding: 0;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: none;
+}
+.thicktitle {
+    padding: 0;
+    text-align: center;
+}
+.thicktitle {
+    height: 27px;
+    padding: 0 10px;
+    border: solid #C4C4C4;
+    border-width: 1px 1px 0;
+    background: #F3F3F3;
+    line-height: 27px;
+    font-family: arial, "\5b8b\4f53";
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+#protocol-con {
+    height: 356px;
+    overflow: auto;
+    padding: 10px 20px 0 10px;
+    color: #000;
+}
+#protocol-con h4 {
+    font-weight: bold;
+}
+#protocol-con h5 {
+    line-height: 30px;
+}
+.regist-2013 .btnt {
+    width: 322px;
+    margin: 20px auto 0;
+}
+.juzhong{
+    text-align: center;
+    margin: 0 auto;
+}
+.regist-2013 .btnt .btn-img{width:322px;
+    height:34px;
+    line-heiht:34px;
+    background:#e4393c;
+    color:#FFF;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    font-family:"微软雅黑";
+    font-size:16px;
+    font-weight:800;
+}
+.contain .btn-box .btn {
+    width: 100px;
+    margin-right: 20px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    background: #b1191a;
+    padding: 0;
+    height: 38px;
+}
+
+.reg-form #reg-reset {
+    width: 100px;
+    height: 38px;
+    font-size: 18px;
+    cursor: pointer;
+    background: #fff;
+    padding: 0;
+    color: #b1191a;
+}

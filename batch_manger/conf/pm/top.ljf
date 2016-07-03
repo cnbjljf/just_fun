@@ -1,0 +1,7 @@
+put:
+    db_host:
+        -  /home/yq/pexpect-3.3.tar.gz /tmp/pexpect-3.3.tar.gz require
+
+command:
+    db_host:
+        - tar zxf /tmp/pexpect-3.3.tar.gz -C /tmp/ ; cd /tmp/pexpect-3.3 ; python setup.py install

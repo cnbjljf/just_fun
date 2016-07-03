@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="/static/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!--&lt;!&ndash; Custom CSS &ndash;&gt;-->
+<link href="/static/css/style.css" rel='stylesheet' type='text/css' />
+<!--&lt;!&ndash; Graph CSS &ndash;&gt;-->
+<link href="/static/css/lines.css" rel='stylesheet' type='text/css' />
+<link href="/static/css/font-awesome.css" rel="stylesheet">
+<!-- jQuery -->
+<script src="/static/js/jquery-2.2.3.js"></script>
+<!----webfonts--->
+<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<!---//webfonts--->  
+<!-- Nav CSS -->
+<link href="/static/css/custom.css" rel="stylesheet">
+<!--<link href="/static/css/reset.css" rel="stylesheet">-->
+<!-- Metis Menu Plugin JavaScript -->
+<!-- Graph JavaScript -->
+</head>
+<body>
+<div id="wrapper">
+     <!-- Navigation -->
+        <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">北京XX运维管理系统</a>
+            </div>
+			<form class="navbar-form navbar-right">
+            </form>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw nav_icon"></i>仪表板</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>资产管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="grids.html">设备管理表</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-indent nav_icon"></i>数据报表<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">日志数据展示</a>
+                                    <a href="#">日志数据导出</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="widgets.html"><i class="fa fa-flask nav_icon"></i>小工具</a>
+							<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Ping测试</a>
+									<a href="#">Dig测试</a>
+									<a href="#">traceroute测试</a>
+								</li>
+							</ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+		<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" ></a></div>
+        <div id="page-wrapper">
+        <div class="graphs">
+     	<div class="col_3">
+        	<div class="clearfix"> </div>
+      </div>
+      <div class="col_1">
+            <div class="clearfix"> </div>
+	  </div>
+			<div>
+			<!--<form   float="left",width="100%" >-->
+			<table  border="1" cellpadding="10px" solid="green" width="80%">
+				<div id="opration">
+				<input type="button" onclick="QuanXuan()" value="全选">
+				<input type="button" onclick="QuanBuXuan()" value="全部取消">
+				<input type="button" onclick="FanXuan()" value="反选">
+				<input type="button" onclick="Add_frame()" value="添加">
+				<input type="button" onclick="mul_edit()" value="批量编辑">
+				<font id="save_edit" class="hide" color="red" onclick="mul_edit_save()">保存</font>
+				<font id="cancel_edit" class="hide" color="green" onclick="mul_edit_cancel()">取消</font>
+				<input type="submit" name="shanchu" onclick="Del_frame()" value="删除">
+
+				</div>
+				<tr>
+					<td>选择</th>
+					<td>主机名</td>
+                    <td>IP</td>
+					<td>端口</td>
+					<td>状态</td>
+					<td>更改信息</td>
+
+				</tr>
+                {% for info in host_info %}
+                    <tr>
+                        <td><input id="no1" onclick="choose_it(this)" type="checkbox" value="1"></td>
+                        <td><div class="hostname">{{ info.hostname }}</div></td>
+                        <td><div class="ip">{{ info.hostip }}</div></td>
+                        <td><div class="port">{{ info.port }}</div></td>
+                        <td><div class="status">{{ info.status }}</div></td>
+                        <td><div onclick="edit(this)">编辑</div></td>
+                    </tr>
+                {% endfor %}
+			</table><hr>
+			<!--<input type="button" value="保存" onclick="submit_af()">-->
+			<div id='submit_form' class="biaodan hide" >
+                <fieldset>
+					<form action="/rm/" method="post" >
+						主机名<input  id="in_hostname" type="text" name="hostname" value=""><p>
+						端口：<input id="in_port" type="text" name="hostport" value=""><p>
+                        &nbsp;&nbsp;&nbsp; IP: &nbsp;&nbsp;&nbsp;<input id="in_ip" type="text" name="hostip" value=""></p>
+						状态：<select id="in_status" name="status">
+							  <option value="online" name="online">在线</option>
+							  <option value="offline" name="offline">下线</option>
+							  <option value="fix" name="fix">维护</option>
+							  </select><p>
+						<input type="submit"   value="提交">
+						<input type="button"  onclick="return Cancle_sm()" value="取消">
+					</form>
+                </fieldset>
+			</div>
+			<!--</form>-->
+		<div class="col-md-6 col_5">
+		  <div id="chart_container">
+		   <!--<div id="chart"></div>-->
+	       <div id="slider"></div>
+
+</div>
+	      <!-- map -->
+<!-- //map -->
+       </div>
+       <div class="clearfix"> </div>
+    </div>
+    <div class="content_bottom" style="height: 400px">
+		<div class="col-md-8 span_3">
+	 	</div>
+	   <div class="col-md-4 span_4">
+
+		</div>
+		<div class="clearfix" style="height: 400px;"> </div>
+	    </div>
+		<div class="copy">
+            <p>Copyright &copy; 2015. by beijing xx stytem!! <a href="http://www.xx.com/" target="_blank" title="北京XX运维管理系统"></a> 
+	    </div>
+		</div>
+
+      <!-- /#page-wrapper -->
+
+    <!-- /#wrapper -->
+    <!-- Bootstrap Core JavaScript -->
+	<script src="/static/js/table_edit.js"></script>
+</body>
+</html>

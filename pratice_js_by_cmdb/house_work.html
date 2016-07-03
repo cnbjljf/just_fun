@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>makr-->first</title>
+    <style>
+        .biaodan{
+            background-color: gray;
+            position: absolute;
+            left: 43%;
+            top:35%;
+        }
+        .hide{
+            display: none;
+        }
+        .header{
+            background-color: #00a2ca;
+            height: 100px;
+            text-align:center
+        }
+        .big_title{
+            color: orange;
+            font-size:50px;
+            width: 100%;
+            height: 50px;
+            line-height: 95px;
+        }
+        .left_content{
+            float: left;
+            width: 30%;
+        }
+        .table_style{
+           float: right;
+           width: 100%;
+        }
+        .div_bottom{
+            text-align:center;
+            background-color: #00a2ca;
+            width: 100%;
+            font-size:25px;
+        }
+        .title{
+            background-color: pink;
+            color: white;
+            height: 50px;
+            line-height: 50px;
+        }
+        .menu{
+            float: left;
+            width: 10%;
+            /*height: 300px;*/
+            background-color: yellow;
+    </style>
+</head>
+<body>
+<div id="header_page" class="header">
+    <font class="big_title">CMDB管理系统（第一测试简陋版）--温柔易淡</font>
+</div>
+
+<div>
+        <div class="menu">
+            <div class="item">
+                <div class="title" onclick="Func(this);">资产管理系统</div>
+                <div class="body">
+                    <div color="red">CMDB测试样板</div>
+                    <div>私密相片</div>
+                    <div>SKY大舞厅</div>
+                </div>
+            </div>
+
+            <div class="item">
+                 <div class="title" onclick="Func(this);">公具箱</div>
+                <div class="body hide">
+                    <div>ping测试</div>
+                    <div>nslookup测试</div>
+                    <div>traceroute测试</div>
+                </div>
+            </div>
+
+            <div class="item">
+                 <div class="title" onclick="Func(this);">友情链接</div>
+                <div class="body hide">
+                    <div>东京热</div>
+                    <div>石榴社区</div>
+                    <div>丁香社区</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content"></div>
+</div>
+<div>
+<form   float="left",width="100%" >
+<table  border="1" cellpadding="10px" solid="green" width="80%">
+    <div id="opration">
+    <input type="button" onclick="QuanXuan()" value="全选">
+    <input type="button" onclick="QuanBuXuan()" value="全部取消">
+    <input type="button" onclick="FanXuan()" value="反选">
+    <input type="button" onclick="Add_frame()" value="添加">
+    <input type="button" onclick="mul_edit()" value="批量编辑">
+    <font id="save_edit" class="hide" color="red" onclick="mul_edit_save()">保存</font>
+    <font id="cancel_edit" class="hide" color="green" onclick="mul_edit_cancel()">取消</font>
+    <input type="button" onclick="Del_frame()" value="删除">
+
+    </div>
+    <tr>
+        <td>选择</th>
+        <td>主机名</td>
+        <td>端口</td>
+        <td>状态</td>
+        <td>更改信息</td>
+
+    </tr>
+    <tr>
+        <td><input id="no1" onclick="choose_it(this)" type="checkbox" value="1"></td>
+        <td><div class="hostname">CBN-XA-1-3O7</div></td>
+        <td><div class="port">22</div></td>
+        <td><div class="status">下线</div></td>
+        <td><div onclick="edit(this)">编辑</div></td>
+    </tr>
+    <tr>
+        <td><input id="no2" onclick="choose_it(this)" type="checkbox" value="2"></td>
+        <td><div class="hostname">CMN-NJ-1-3P7</div></td>
+        <td><div class="port">22</div></td>
+        <td><div class="status">在线</div></td>
+        <td><div onclick="edit(this)">编辑</div></td>
+    </tr>
+    <tr>
+        <td><input id="no3" onclick="choose_it(this)"  type="checkbox" value="3"></td>
+        <td><div class="hostname">HM-WH-1-3X7</div></td>
+        <td><div class="port">22</div></td>
+        <td><div class="status">维护</div></td>
+        <td><div onclick="edit(this)">编辑</div></td>
+    </tr>
+</table><hr>
+<!--<input type="button" value="保存" onclick="submit_af()">-->
+<div id='submit_form' class="biaodan hide">
+    <fieldset>
+        <legend>编辑设备信息</legend>
+        <form >
+            主机名<input  id="in_hostname" type="text"><p>
+            端口：<input id="in_port" type="text"><p>
+            状态：<select id="in_status">
+                  <option>在线</option>
+                  <option>下线</option>
+                  <option>维护</option>
+                  </select><p>
+            <input type="button" name="tijiao" onclick="return checkCon()" value="提交">
+            <input type="button"  onclick="return Cancle_sm()" value="取消">
+        </form>
+    </fieldset>
+</div>
+</form>
+</div>
+
+<div id="bottom" class="div_bottom">
+    <font >最终解释权归温柔易淡所有</font>
+</div>
+
+<script src="jquery-2.2.3.js"></script>
+<script>
+//    这个函数是用来启动编辑作用的函数
+    function edit(id) {
+//        首先把修改框的隐藏样式给去除
+        $('#submit_form').removeClass('hide');
+//        以下三行是把现有的内容提出来，等会放到修改框里面去，
+        var cur_port = $(id).parent().siblings().children('.port').text();
+        var cur_hostname = $(id).parent().siblings().children('.hostname').text();
+        var cur_status = $(id).parent().siblings().children('.status').text();
+
+//        下面几步都是通过替换的方式，把当前要编辑的一行信息替换到编辑框里面去
+        $('#in_hostname').replaceWith('<input  id="in_hostname" type="text" value='+cur_hostname +'>');
+        $('#in_port').replaceWith('<input  id="in_port" type="text" value='+cur_port +'>');
+        $('#in_status').children('option').each(function(index,element){
+//            下面执行一个判断语句，判断当前服务器状态等于下拉列表中的哪个，如果匹配上了，那么就把下拉列表里面的匹配到\
+//            状态添加上selected=selected参数
+           if (cur_status == $(element).val() ){
+               $(element).replaceWith("<option selected='selected'>"+cur_status+"</option>")
+           }});
+//        标记位，标志着用户是对哪个内容做更改
+        $(id).attr('id','on_modify');
+    }
+
+//    这个函数是用来更改input type=check 的checked值，选中了就是true
+    function choose_it(id) {
+        if (!$(id).attr('checked')) {
+            $(id).attr('checked', true)
+        }else{
+             $(id).attr('checked', false)
+        }
+    }
+
+//    这个方法用来判断用户有没有勾选 复选框
+    function check_gou(){
+        i=0
+        $('input[type="checkbox"]').each(function(index,element){
+            if($(element).attr('checked')=='checked'){
+//                勾选了就加1
+                i+=1
+            }
+        });
+        if (i != 0) {
+            return true
+        } else {
+            alert("您没有勾选任何列表，请先勾选列表！")
+            return false
+        }
+
+    }
+//    这个函数在批量编辑的时候使用
+    function mul_edit() {
+        if(check_gou()){
+        $('input[type="checkbox"]').each(function(index,element) {
+            if ($(element).attr('checked') == 'checked') {
+                var cur_port = $(element).parent().siblings().children('.port').text();
+                var cur_hostname = $(element).parent().siblings().children('.hostname').text();
+                var cur_status = $(element).parent().siblings().children('.status').text();
+                //        下面几步都是通过替换的方式，把当前要编辑的一行信息替换到编辑框里面去
+                $(element).parent().siblings().children('.hostname').replaceWith('<input class="hostname"  type="text" value=' + cur_hostname + '>');
+                $(element).parent().siblings().children('.port').replaceWith('<input class="port"  type="text" value=' + cur_port + '>');
+                $(element).parent().siblings().children('.status').replaceWith('<input  class="status" type="text" value=' + cur_status + '>');
+            }
+            $('#save_edit').removeClass('hide');
+            $('#cancel_edit').removeClass('hide')
+        })
+        };
+    }
+
+//    这个方法用来保存批量编辑的
+    function mul_edit_save() {
+        $('input[type="checkbox"]').each(function(index,element){
+            if($(element).attr('checked')=='checked'){
+            var cur_port = $(element).parent().siblings().children('.port').val();
+                console.log($(element).parent().siblings().children('.port').attr('value'))
+            var cur_hostname = $(element).parent().siblings().children('.hostname').val();
+            var cur_status = $(element).parent().siblings().children('.status').val();
+            if(cur_hostname,cur_port,cur_status){
+    //        下面几步都是通过替换的方式，把当前要编辑的一行信息替换到编辑框里面去
+                $(element).parent().siblings().children('.hostname').replaceWith('<div class="hostname">'+cur_hostname +'<div>');
+                $(element).parent().siblings().children('.port').replaceWith('<div class="port">'+cur_port +'<div>');
+                $(element).parent().siblings().children('.status').replaceWith('<div class="status">'+cur_status +'<div>');
+                }else{
+                    alert('请输入内容,框内不能有空');
+                    return false
+            }};
+        });
+        $('#save_edit').addClass('hide');
+        $('#cancel_edit').addClass('hide')
+    }
+
+    function mul_edit_cancel() {
+        $('input[type="checkbox"]').each(function(index,element){
+            if($(element).attr('checked')=='checked'){
+    //        下面几步都是通过替换的方式，把当前要编辑的一行信息替换到编辑框里面去
+            var cur_port = $(element).parent().siblings().children('.port').val();
+            var cur_hostname = $(element).parent().siblings().children('.hostname').val();
+            var cur_status = $(element).parent().siblings().children('.status').val();
+
+            $(element).parent().siblings().children('.hostname').replaceWith('<div class="hostname" >'+cur_hostname +'</div>');
+            $(element).parent().siblings().children('.port').replaceWith('<div class="port">'+cur_port +'</div>');
+            $(element).parent().siblings().children('.status').replaceWith('<div class="status">'+cur_status +'</div>');
+            }});
+        $('#save_edit').addClass('hide');
+        $('#cancel_edit').addClass('hide')
+    }
+
+
+
+//    全部选中的方法
+    function QuanXuan() {
+//        alert('全部选中')
+        $('input[type=checkbox]').prop('checked',true)
+        $('input[type=checkbox]').attr('checked',true)
+    }
+
+//  全部不选中的方法
+    function QuanBuXuan() {
+//        alert('全部不选')
+         $('input[type=checkbox]').prop('checked',false)
+        $('input[type=checkbox]').attr('checked',false)
+    }
+
+//    全部反选的方法
+    function FanXuan() {
+//        alert('全部反选')
+//        each表示遍历所有的值（each前面的内容就是需要遍历的值），each后面跟着的括号就是遍历一次需要执行什么操作
+        $('input[type=checkbox]').each(function() {
+            $(this).prop('checked', !$(this).attr('checked'))
+            $(this).attr('checked', !$(this).attr('checked'))
+        })}
+
+//    在修改框内提交按钮时调用此方法，主要是对输入内容的判断，如果有内容就把表格里面替换成修改后的，没有输入内容题提示输入
+    function checkCon() {
+        var host_name = $('#in_hostname').val();
+        var host_port = $('#in_port').val();
+        var host_status = $('#in_status').val();
+        if(host_name,host_port){
+    //        下面的是遍历需要编辑的主机名，端口，状态信息等，通过switch来匹配后赋值
+            $('#on_modify').parent().siblings().children('div').each(function(index,element){
+               switch($(element).attr('class')){
+                   case 'hostname':
+                       $(element).text(host_name);
+                       break;
+                   case 'port':
+                       $(element).text(host_port);
+                       break;
+                   case 'status':
+                       $(element).text(host_status);
+                       break;
+               }
+            });
+    //        删除标记位
+            $('#on_modify').removeAttr('id');
+            $('#submit_form').addClass('hide');
+        }else{
+            alert('请输入内容');
+            return false
+        }
+    }
+
+//    取消编辑修改框
+    function Cancle_sm() {
+        $('#submit_form').addClass('hide');
+    }
+
+//  增加表格
+    function Add_frame(){
+//        自定义一个数组
+        var shuzu=[0]
+//        遍历td下的input标签，主要把value值给提取出来
+        $('td input').each(function(index,element){
+            shuzu.push($(element).val())
+        })
+//        找出数组里面最大的值，为添加下面的html代码中赋值input的id和value值
+        var maxzhi = Math.max.apply(null,shuzu)
+        var use_value = Number(maxzhi)+1
+//        在表单里的最后一个子元素里面插入html代码
+        $('form table').children().last().after('<tr>\
+        <td><input id="no'+use_value +'" type="checkbox" onclick="choose_it(this)" value='+use_value+'></td>\
+        <td><div class="hostname"></div></td>\
+        <td><div class="port"></div></td>\
+        <td><div class="status"></div></td>\
+        <td><div onclick="edit(this)">编辑</div></td>\
+    </tr>')
+    }
+
+//    删除所选中的内容
+    function Del_frame() {
+        $('input[type=checkbox]').each(function(index,element) {
+//            如果判断出这个input checked值为checked，表示已经选中了这个框，那么就执行下面的删除动作
+            if( $(element).attr('checked')=='checked'){
+//                提出选中框的id值
+                var del_id = $(element).attr('id')
+//                alert(del_id)
+//                开始删除
+                $('#'+del_id).parent().parent().remove()
+                $('#'+del_id).parent().siblings().remove()
+                $('#'+del_id).parent().remove()
+                $('#'+del_id).remove()
+            }
+        })
+    }
+    function Func(a) {
+        $(a).next().removeClass('hide');
+        $(a).parent().siblings().find('.body').addClass("hide")
+    }
+</script>
+</body>
+</html>

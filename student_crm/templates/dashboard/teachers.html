@@ -1,0 +1,28 @@
+{% extends "Dashboard Template for Bootstrap.html" %}
+{% block header %}
+    讲师信息
+{% endblock %}
+{%  block content_body %}
+  <table class="table table-striped" >
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>用户</td>
+                <td>姓名</td>
+                <td>校区</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in user_list %}
+                <tr>
+{#                    <td><a href="/crm/teachers/{{ user.id }}/">{{ user.id }}</a></td>#}
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.user }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.school }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <a class="btn btn-info pull-left" href="/crm/teachers/new">Add_Record</a>
+    </table>
+{%  endblock %}

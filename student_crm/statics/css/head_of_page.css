@@ -1,0 +1,36 @@
+.head_of_page{
+    background-color: #EEEEEE;
+    height: 29px;
+    margin:-9px;
+    padding: 2px;
+}
+li{
+    text-align: center;
+    float: left;
+    padding: 0;
+    margin: 0;
+    margin-top: -10px;
+    list-style: none;
+    width:150px;
+}
+.bottom_of_page{
+    background-color: #EEEEEE;
+    height: 30px;
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    width: 100%;
+    text-align:center;
+    z-index:2;
+    overflow:hidden;
+    line-height: 30px;
+}
+
+#main_content{
+    margin-top: 50px;
+    margin-left: 100px;
+
+}
+.hide_form{
+    display: none;
+}

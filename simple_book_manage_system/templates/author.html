@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统--作者管理</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+
+</head>
+<body>
+<div class="breadcrumbs">
+    <a href="http://127.0.0.1:8000/book/">book</a>
+    <a href="http://127.0.0.1:8000/book/author.html">/author</a>
+
+</div>
+<hr>
+<fieldset >
+    <form action="/book/author.html/" method="post">
+        <h3>添加用户</h3>
+        作&nbsp;者&nbsp;姓: <input name="surname"  id='surname' type="text"><p>
+        作&nbsp;者&nbsp;名: <input name="last_name" id="last_name" type="text"><p>
+        作者email:<input name="email" id='email' type="text"><p>
+        <input value="提交信息" onclick="return mul_edit_save()" type="submit" >
+    </form>
+</fieldset>
+<hr>
+
+<table cellspacing="0" border="solid 1px " style="border-color: beige" >
+    <tr style="color: red">
+        <td>姓</td>
+        <td>名</td>
+        <td>联系方式</td>
+    </tr>
+    {% for line in author_info  %}
+        <tr style="color: green">
+            <td><div >{{ line.first_name }}</div></td>
+            <td><div >{{ line.last_name }}</div></td>
+            <td><div >{{ line.email }}</div></td>
+        </tr>
+    {% endfor %}
+</table>
+<script src="/static/js/table_edit.js"></script>
+<script src="/static/js/jquery-2.2.3.js"></script>
+{#<input value="编辑作者信息" onclick="mul_edit()" type="button" >#}
+
+
+</body>
+</html>

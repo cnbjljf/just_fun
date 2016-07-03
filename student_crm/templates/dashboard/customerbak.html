@@ -1,0 +1,53 @@
+{% extends 'Dashboard Template for Bootstrap.html' %}
+{% block header %}
+    客户信息列表
+{% endblock %}
+{% block content_body %}
+    <table  class="table table-striped">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>客户QQ</td>
+                <td>客户姓名</td>
+                <td>咨询课程</td>
+                <td>来源渠道</td>
+                <td>课程类型</td>
+                <td>客户备注</td>
+                <td>当前状态</td>
+                <td>课程顾问</td>
+                <td>日期</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customer_list %}
+                <tr>
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.qq }}</td>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.source_type }}</td>
+                    <td>{{ customer.course }}</td>
+                    <td>{{ customer.get_course_type_display }}</td>
+                    <td>{{ customer.consult_memo |truncatechars:30 }}</td>
+                    <td class="{{ customer.status }}">{{ customer.get_status_display }}</td>
+                    <td>{{ customer.consultant }}</td>
+                    <td>{{ customer.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <span class="step-links">
+            {% if customer_list.has_previous %}
+                <a href="?page={{ customer_list.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ customer_list.number }} of {{ customer_list.paginator.num_pages }}.
+            </span>
+
+            {% if customer_list.has_next %}
+                <a href="?page={{ customer_list.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

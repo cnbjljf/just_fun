@@ -1,0 +1,59 @@
+{% extends "Dashboard Template for Bootstrap.html" %}
+{% load customer_tag %}
+{% block header %}
+    班级信息
+{% endblock %}
+{% block content_body %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>课程</td>
+                <td>学期</td>
+                <td>课程类型</td>
+                <td>讲师</td>
+                <td>开班日期</td>
+                <td>毕业日期</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for cl in class_list %}
+            <tr>
+                <td><a href="/crm/classes/{{ cl.id }}" >{{ cl.id }}</td>
+                <td>{{ cl.course }}</td>
+                <td>{{ cl.semester }}</td>
+                <td>{{ cl.get_course_type_display }}</td>
+                <td>{{ cl.get_teachers_display }}</td>
+                <td>{{ cl.start_date }}</td>
+                {% if cl.graduate_date == None %}
+                    <td class="graduated">暂未毕业</td>
+                {% else %}
+                    <td class="unregistered" >{{ cl.graduate_date }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+
+        </tbody>
+          <a class="btn btn-info pull-left" href="classes/new">Add_Record</a>
+    </table>
+    <nav>
+        <ul class="pagination">
+            {% if class_list.has_previous %}
+                <li class=""><a href="?page={{ class_list.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span></a></li>
+            {% endif %}
+                  {% for page_num in class_list.paginator.page_range %}
+                      {% guess_page class_list.number page_num %}
+                  {% endfor %}
+            {% if class_list.has_next %}
+                <li class="">
+                    <a href="?page={{ class_list.next_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+{% endblock %}

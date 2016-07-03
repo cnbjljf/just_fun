@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<title>欢迎登录XX系统</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="css/login.css"/>
+	<script>
+        function shandong() {
+        var content = document.title;
+        var firstChar = content.charAt(0);
+        var sub = content.substring(1,content.length);
+        document.title = sub + firstChar;
+    }
+    setInterval("shandong()",1000);
+</script>
+</head>
+
+<body>
+<div class="site_out">
+    <div class="site">
+          <dl class="site_left">
+             <dt>欢迎来到XX系统！</dt>
+             <dt><a href="#">请登录</a></dt>
+             <dt><a href="#">免费注册</a></dt>
+          </dl>
+
+        <ul class="site_right">
+          <li class="san">
+            <a href="#">待填充字体<span></span></a>
+          </li>
+       </ul>
+    </div>
+</div>
+<!--头部-->
+<div class="header">
+   <div class="header_in">
+    <a href="index.html" title="XX系统" class="logo"><h1></h1></a>
+   </div>
+</div>
+<!-- 主要内容 -->
+<div id="fc_container" class="grid-anto clearfix">
+		<div class="member_center_main" id="c_1"
+			style="width: 100%; height: 550px;">
+
+			<div id="content">
+				<div class="login-wrap">
+					<div class="w" style="margin-right: 140px;">
+						<div class="login-form">
+							<div class="login-box" style="display: block;">
+								<div class="mt">
+									<h1>欢迎登陆xx系统</h1>
+									<div class="extra-r">
+										<div class="regist-link">
+											<a href="zhuche.html"><b></b>立即注册</a>
+										</div>
+									</div>
+								</div>
+								<div class="msg-wrap">
+									<div class="msg-warn">
+										<b></b>公共场所不建议自动登录，以防账号丢失
+									</div>
+									<div class="msg-error hide" style="display: none;">
+										<b></b><span></span>
+									</div>
+								</div>
+
+								<div class="mc">
+									<div class="form">
+										<form id="formlogin" method="post" action="/login" onsubmit="return false;">
+											<div class="item item-fore1">
+												<label for="loginname" class="login-label name-label"></label>
+												<input id="loginname" type="text" class="itxt"
+													name="loginname" tabindex="1" autocomplete="off"
+													placeholder="用户名/已验证手机/邮箱" value="" />
+												<span class="clear-btn"  style="display: none;"></span>
+											</div>
+											<div id="entry" class="item item-fore2">
+												<label class="login-label pwd-label" for="nloginpwd"></label>
+												<label id="sloginpwd" style="display: none;"> </label>
+												   <input  type="password" id="nloginpwd" name="nloginpwd"
+													class="itxt itxt-error" tabindex="2" autocomplete="off"
+													placeholder="密码" />
+												   <input type="hidden"  name="loginpwd" id="loginpwd" value="" class="hide" />
+														<span class="clear-btn"></span>
+												   <span class="capslock" style="display: none;"><b></b>大小写锁定已打开</span>
+											</div>   
+											<div id="forget-p" class="item item-fore3">
+												<div class="safe">
+													<span> <input id="autoLogin" name="chkRememberMe" type="checkbox" />
+														<label for="chkRememberMe">自动登录</label>
+													</span>
+													<span class="forget-pw-safe">
+														<a href="/findPswBack" class="" target="_blank">忘记密码?</a>
+													</span>
+												</div>
+
+											</div>
+
+											<div id="o-authcode" class="item item-vcode item-fore4  hide ">
+												<input id="authcode" type="text" class="itxt itxt02" name="authcode" tabindex="5" />
+												<img id="FC_Verification1" class="verify-code" src="img/c_back.png" onclick="this.src='/captcha?' + (+ new Date())" />
+											</div>
+											<div class="item-fore5">
+												<div class="login-btn">
+													<a id="btnSubmit" href="javascript:;"
+														class="btn-img btn-entry" id="loginsubmit" tabindex="6">登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
+												</div>
+											</div>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="login-banner">
+						<div class="w">
+							<div id="banner-bg" class="i-inner"
+								style="background: url(images/534daddbc373c.png) -183px 100px no-repeat;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+<!-- 主要内容  end -->
+  
+ <!--版权-->
+<div class="copyright">
+  <div class="copyright_in">
+         <a href="#">关于XX系统</a>|
+         <a href="#">联系我们</a>|
+         <a href="#">免责申请</a>
+         <dl>
+           <dt>Copyright ©2014-2015 北京XX公司运维管理系统</dt>
+           <dt>运维管理中心联系电话：010-84290917</dt>
+        </dl>
+  </div>
+ </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+		
+	

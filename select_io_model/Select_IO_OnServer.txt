@@ -1,0 +1,16 @@
+1 实例化socket，设置不阻塞，绑定端口和IP,设置最大监听数量（实例名称为server）
+2 设置inputs这个列表，里面存放有server这个socket实例对象
+3 设置outputs这个列表，里面为空
+4 设置messag_queues列表，里面为空
+5 如果inputs有对象（言外之意就是说input表不为空），那么开始循环
+6 调用select.select方法，分别返回下面三个参数，把下面三个参数重新对应值，rlist==readable,outputs==writeable,inputs==exceptional 
+			rlist: wait until ready for reading				---> readable
+			wlist: wait until ready for writing             ---> writeable
+			xlist: wait for an “exceptional condition”      ---> exceptional
+7 开始遍历已经准备好读的列表（readable） , 如果s 是一个不可接受数据的socket对象，那么就把进行赋值，把新的socket对象（用来接受发送数据）赋值给conn，并且设置为不阻塞，并且把这个conn放入inputs列表里面，把conn和一个队列进行绑定，存放在一个字典里
+
+8 在第七步的遍历的开始，判断s如果是一个可以接受数据的socket对象，那么就开始接受数据，（A） 如果收到了数据，那么把这个可以接受数据的socket实例作为key，从刚才的字典（在把s造成一个可以接受数据的时候生产了一个字典）里取出要发送的信息，再通过队列的put方法发送数据。如果这个可以接受数据的socket不在准备好写数据的列表里面，那么就添加进去。(B),如果没有接受到数据，那么就把s（可以接受数据的socket）从outputs列表里面移除，从inputs列表里面移除，关闭连接
+
+9 遍历wirtable(准备好发送数据的socket列表)，把遍历出来的socket作为key，从message_queue队列里面获取要消息，如果没有获取到消息，那么就把这个socket从outputs里面移除，否则的话，就把这个获取到的消息发送出去。
+
+10 遍历异常条件的列表，在inputs表里面移除这个s，如果也在outputs列表里面，那么也删除，最后关闭这个连接，删除s在消息队列所对应的信息

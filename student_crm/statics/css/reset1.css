@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+
+body,html {
+
+	font-family: 'Microsoft Yahei', '\5FAE\8F6F\96C5\9ED1', Arial,
+		'Hiragino Sans GB', '\5B8B\4F53';
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	color: #5e5e5e
+}
+
+button,dd,div,dl,dt,form,img,input,li,ol,p,td,th,ul {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline:none;
+}
+
+
+li {
+	list-style-type: none
+}
+
+img {
+	vertical-align: top
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	font-weight: 500;
+
+}
+
+input {
+	font-size: 12px;
+	vertical-align: middle;
+	color: #333;
+	outline: 0
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+a {
+	cursor: pointer;
+	outline: 0
+}
+ul,li,ol{
+	padding: 0;
+	list-style: none;
+}
+
+a:hover,a:link,a:visited {
+	text-decoration: none
+}
+a:link {color: #151515;	text-decoration: none;}
+a:visited {	text-decoration: none;	color: #151515;}
+a:hover {text-decoration: none;}
+a:active {	text-decoration: none;	color: #151515;}
+form, input, button,img ,textarea,select{	border: 0;font-family: "Microsoft YaHei";  }
+button{background:transparent;}
+ul,li,ol{ padding:0; list-style:none; }
+i, em {  font-style: normal;}
+
+ol, ul {list-style: outside none none;}
+
+
+/*头部样式开始*/
+.site_out{
+    widows:100%;
+    height: 30px;
+    border-bottom: 1px solid #eeeeee;
+    background: #F7F7F7;
+}
+.site {
+    widows: 120px;
+    margin:0 auto;
+    height: 30px;;
+}
+.site_left{
+    widows: 328px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+}
+.san  .site_right{
+	float: left;
+	width: 70px;
+	color: #999;
+	padding:0 10px;
+	margin-right: 10px;
+	cursor: pointer;
+	position: relative;
+	
+}

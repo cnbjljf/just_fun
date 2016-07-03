@@ -1,0 +1,11 @@
+.breadcrumbs {
+    background: cornflowerblue;
+    padding: 10px 40px;
+    border: none;
+    font-size: 14px;
+    color: #c4dce8;
+    text-align: left;
+}
+.hide{
+    display: none;
+}

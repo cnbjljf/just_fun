@@ -1,0 +1,27 @@
+{% extends "Dashboard Template for Bootstrap.html" %}
+{% block header %}
+    班级信息
+{% endblock %}
+{%  block content_body %}
+    <form method="post"   class="form-horizontal">
+        {% csrf_token %}
+        <div class="form-group">
+            {% for info in class_info %}
+                {% if info.field.required %}
+                    <label class="col-sm-2 text-left" style="font-weight: bolder">*{{ info.label }}</label>
+                {% else %}
+                    <label class="col-sm-2 text-left">{{ info.label }}</label>
+                {% endif %}
+                <div class="col-sm-9">
+                    {{ info }}
+              </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm-11">
+            <input type="submit" class="btn btn-primary " value="Save" name="action">
+            <input type="submit" class="btn btn-danger" value="Del" name="action">
+        </div>
+    </form>
+
+
+{% endblock %}

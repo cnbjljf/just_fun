@@ -1,0 +1,6 @@
+2016-01-08 14:31:56,674 | root | INFO | {'-g': 'web', '-c': 'hostname'}
+2016-01-08 14:32:31,957 | root | INFO | {'-m': 'put', '-r': '/tmp/test.py', '-l': 'main_run.py'}
+2016-01-08 14:32:39,445 | root | INFO | {'-l': 'main_run.py', '-r': '/tmp/test.py', '-m': 'put', '-g': 'db'}
+2016-01-08 14:35:49,161 | root | INFO | {'-r': '/tmp/test.py', '-m': 'put', '-l': 'main_run.py', '-g': 'db'}
+2016-01-08 14:36:49,672 | root | INFO | {'-g': 'db', '-m': 'put', '-r': '/tmp/test.py', '-l': 'main_run.py'}
+2016-01-08 14:37:26,259 | root | INFO | {'-l': 'main_run.py', '-g': 'db', '-r': '/tmp/test.py', '-m': 'put'}
